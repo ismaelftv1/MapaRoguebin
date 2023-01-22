@@ -13,7 +13,7 @@ namespace mapa
         public Mapa(int ancho, int alto)
         {
             mapa = new Celda[ancho, alto];
-            CellularAut();
+            RamdonWalk();
         }
 
         public void Rellenar()
@@ -35,7 +35,8 @@ namespace mapa
 
             int x = mapa.GetLength(0)/2;
             int y = mapa.GetLength(1)/2;
-            int suelomax = 0;
+            int suelo = 1500;
+            int suelomin = 0;
 
             // initialize all map cells to walls.
 
@@ -87,11 +88,11 @@ namespace mapa
                 if (mapa[x, y].terreno == 0)
                 {
                     mapa[x, y].terreno = 2;
-                    suelomax++;
+                    suelomin++;
                 }
 
 
-            } while (suelomax != 500);
+            } while (suelomin != suelo);
         }
 
         public void CellularAut()
@@ -108,6 +109,7 @@ namespace mapa
                     mapa[i, j] = new Celda(rng.Next(-1,1));
                 }
             }
+            
             do
             {
                 for (int i = 0; i < mapa.GetLength(0); i++)
@@ -193,6 +195,8 @@ namespace mapa
                 }
                 vueltas++;
             } while (vueltas != 5);
+
+            
             
         }
 
