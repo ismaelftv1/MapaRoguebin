@@ -101,6 +101,7 @@ namespace mapa
             int ancho = mapa.GetLength(0);
             int alto = mapa.GetLength(1);
             int vueltas = 0;
+            int vueltasmin = 5;
 
             for (int i = 0; i < mapa.GetLength(0); i++)
             {
@@ -194,7 +195,7 @@ namespace mapa
                     }
                 }
                 vueltas++;
-            } while (vueltas != 5);
+            } while (vueltas != vueltasmin);
 
             
             
