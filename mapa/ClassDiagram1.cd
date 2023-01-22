@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="mapa.Celda">
+    <Position X="2.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Celda.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="mapa.Mapa">
+    <Position X="5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAIAAAAACA=</HashCode>
+      <FileName>Mapa.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="mapa" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="mapa.Materiales">
+    <Position X="5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAACgAAAAA=</HashCode>
+      <FileName>Materiales.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
