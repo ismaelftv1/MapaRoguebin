@@ -7,13 +7,13 @@ namespace mapa
 {
     public class Mapa
     {
-        Celda[,] mapa;
+        public Celda[,] mapa;
         Random rng = new Random();
 
         public Mapa(int ancho, int alto)
         {
             mapa = new Celda[ancho, alto];
-            RamdonWalk();
+            CellularAut();
         }
 
         public void Rellenar()
@@ -101,13 +101,24 @@ namespace mapa
             int ancho = mapa.GetLength(0);
             int alto = mapa.GetLength(1);
             int vueltas = 0;
-            int vueltasmin = 5;
+            int vueltasmin = 7;
 
             for (int i = 0; i < mapa.GetLength(0); i++)
             {
                 for (int j = 0; j < mapa.GetLength(1); j++)
                 {
-                    mapa[i, j] = new Celda(rng.Next(-1,1));
+
+                    if (rng.Next(100) < 60)
+                    {
+                        mapa[i, j] = new Celda(Materiales.Muro);
+                    }
+                    else
+                    {
+                        mapa[i, j] = new Celda(Materiales.Tierra);
+
+                    }
+
+
                 }
             }
             
@@ -117,6 +128,7 @@ namespace mapa
                 {
                     for (int j = 0; j < mapa.GetLength(1); j++)
                     {
+                        mapa[i, j].vecinos = 0;
                         if (i < ancho - 1)
                         {
                             if (mapa[i + 1, j].terreno == 0)
@@ -180,14 +192,18 @@ namespace mapa
                 {
                     for (int j = 0; j < mapa.GetLength(1); j++)
                     {
-                        if (mapa[i, j].vecinos >= 4 && mapa[i,j].terreno == 0)
-                        {
-                            mapa[i, j].terreno = 0;
-                        }
-                        else
+                        if (mapa[i, j].vecinos < 4 && mapa[i, j].terreno == 0)
                         {
                             mapa[i, j].terreno = 2;
                         }
+                        else
+                        {
+                            if (mapa[i, j].vecinos > 6 && mapa[i, j].terreno == 2)
+                            {
+                                mapa[i, j].terreno = 0;
+                            }
+                        }
+
                         if (i == 0 || j == 0 || j == alto - 1 || i == ancho - 1)
                         {
                             mapa[i, j].terreno = 0;
@@ -209,7 +225,6 @@ namespace mapa
                 {
                     Console.SetCursorPosition(i, j);
                     mapa[i, j].Dibuja();
-                    Console.ForegroundColor = ConsoleColor.White;
                 }
             }
         }

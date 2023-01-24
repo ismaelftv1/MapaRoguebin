@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace mapa
 {
-    class Celda
+    public class Celda
     {
         public int terreno;
         public int vecinos;
@@ -32,7 +32,7 @@ namespace mapa
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write("*");
             }
-            else if (terreno == Materiales.Agua)
+            else if (terreno == Materiales.Muro)
             {
                 Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.Write("▓");

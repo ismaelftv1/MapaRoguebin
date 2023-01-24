@@ -7,7 +7,7 @@ namespace mapa
 {
     public static class Materiales
     {
-       public static int Agua = 0;
+       public static int Muro = 0;
        public static int Hierba = 1;
        public static int Tierra = 2;
     }
