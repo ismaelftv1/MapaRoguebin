@@ -91,8 +91,8 @@ namespace mapa
                     suelomin++;
                 }
 
-
             } while (suelomin != suelo);
+            Salida();
         }
 
         public void CellularAut()
@@ -213,8 +213,22 @@ namespace mapa
                 vueltas++;
             } while (vueltas != vueltasmin);
 
-            
-            
+
+        }
+
+        public void Salida()
+        {
+            int salida = 0;
+            do
+            {
+                int x = rng.Next(mapa.GetLength(0));
+                int y = rng.Next(mapa.GetLength(1));
+                if (mapa[x,y].terreno != Materiales.Muro)
+                {
+                    mapa[x, y].salida = 1;
+                    salida++;
+                }
+            } while (salida != 1);
         }
 
         public void Imprimir()

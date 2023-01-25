@@ -12,7 +12,6 @@
             player = new Jugador(10,10);
 
             game = new Master(map, player);
-
             map.Imprimir();
 
             Console.CursorVisible = false;
@@ -24,7 +23,7 @@
                 player.dibuja();
                 tecla = Console.ReadKey(true).Key;
 
-                game.moverjugador(tecla);
+                game.Moverjugador(tecla);
             } while (tecla != ConsoleKey.Escape);
 
         }
