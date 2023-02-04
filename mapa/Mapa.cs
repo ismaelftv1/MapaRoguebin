@@ -216,19 +216,6 @@ namespace mapa
 
         }
 
-        public void DungeonBPS()
-        {
-            int x = rng.Next(mapa.GetLength(0));
-            int y = rng.Next(mapa.GetLength(1));
-
-            //choose a random direction : horizontal or vertical splitting
-
-            //choose a random position (x for vertical, y for horizontal)
-
-            //split the dungeon into two sub-dungeons
-
-        }
-
         public void Salida()
         {
             int salida = 0;
