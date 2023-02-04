@@ -12,10 +12,10 @@
             player = new Jugador(10,10);
 
             game = new Master(map, player);
+            game.SpawnJugador();
             map.Imprimir();
 
             Console.CursorVisible = false;
-
             ConsoleKey tecla;
             do
             {
@@ -24,7 +24,7 @@
                 tecla = Console.ReadKey(true).Key;
 
                 game.Moverjugador(tecla);
-            } while (tecla != ConsoleKey.Escape);
+            } while (tecla != ConsoleKey.Escape && player.vida > 0);
 
         }
     }
