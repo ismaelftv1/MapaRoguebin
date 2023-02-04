@@ -42,8 +42,27 @@ namespace mapa
                     break;
             }
             NuevoMapa();
+            danotrampa();
         }
 
+
+        //Mecanicas trampas
+
+        void danotrampa()
+        {
+            if (map.mapa[player.x,player.y].trampa == 1)
+            {
+                player.vida = player.vida - 5;
+            }
+            else if (map.mapa[player.x, player.y].trampa == 2)
+            {
+                player.vida = player.vida - 15;
+            }
+            else if (map.mapa[player.x, player.y].trampa == 3)
+            {
+                player.vida = player.vida - 25;
+            }
+        }
 
         //Mecanicas generar nuevo mapa
         void NuevoMapa()
@@ -88,7 +107,7 @@ namespace mapa
         {
             MoverMecanica(-1, 0);
         }
-        void SpawnJugador()
+        public void SpawnJugador()
         {
             Random rng = new Random();
             if (map.mapa[player.x, player.y].terreno != Materiales.Tierra)
