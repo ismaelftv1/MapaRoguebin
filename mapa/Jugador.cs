@@ -10,11 +10,13 @@ namespace mapa
     public class Jugador
     {
        public int x,y;
+       public int vida;
 
         public Jugador(int x, int y)
         {
             this.y = y;
             this.x = x;
+            this.vida = 100;
         }
 
         public void dibuja()
