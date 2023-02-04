@@ -13,7 +13,7 @@ namespace mapa
         public Mapa(int ancho, int alto)
         {
             mapa = new Celda[ancho, alto];
-            CellularAut();
+            RamdonWalk();
         }
 
         public void Rellenar()
@@ -25,7 +25,6 @@ namespace mapa
                     mapa[i, j] = new Celda(rng.Next(3));
                 }
             }
-
         }
 
         public void RamdonWalk()
@@ -33,8 +32,8 @@ namespace mapa
             int ancho = mapa.GetLength(0);
             int alto = mapa.GetLength(1);
 
-            int x = mapa.GetLength(0)/2;
-            int y = mapa.GetLength(1)/2;
+            int x = mapa.GetLength(0) / 2;
+            int y = mapa.GetLength(1) / 2;
             int suelo = 1500;
             int suelomin = 0;
 
@@ -48,7 +47,7 @@ namespace mapa
                 }
             }
             //pick a map cell as the starting point.
-            mapa[x,y].terreno = 2;
+            mapa[x, y].terreno = 2;
             //turn the selected map cell into floor.
 
             //while insufficient cells have been turned into floor,
@@ -76,11 +75,11 @@ namespace mapa
                         break;
                 }
 
-                if (x > ancho-1 || x < 0)
+                if (x > ancho - 1 || x < 0)
                 {
                     x = ancho / 2;
                 }
-                else if (y > alto-1 || y < 0)
+                else if (y > alto - 1 || y < 0)
                 {
                     y = alto / 2;
                 }
@@ -93,6 +92,7 @@ namespace mapa
 
             } while (suelomin != suelo);
             Salida();
+            trampas();
         }
 
         public void CellularAut()
@@ -121,7 +121,7 @@ namespace mapa
 
                 }
             }
-            
+
             do
             {
                 for (int i = 0; i < mapa.GetLength(0); i++)
@@ -212,7 +212,20 @@ namespace mapa
                 }
                 vueltas++;
             } while (vueltas != vueltasmin);
+            Salida();
 
+        }
+
+        public void DungeonBPS()
+        {
+            int x = rng.Next(mapa.GetLength(0));
+            int y = rng.Next(mapa.GetLength(1));
+
+            //choose a random direction : horizontal or vertical splitting
+
+            //choose a random position (x for vertical, y for horizontal)
+
+            //split the dungeon into two sub-dungeons
 
         }
 
@@ -223,12 +236,43 @@ namespace mapa
             {
                 int x = rng.Next(mapa.GetLength(0));
                 int y = rng.Next(mapa.GetLength(1));
-                if (mapa[x,y].terreno != Materiales.Muro)
+                if (mapa[x, y].terreno != Materiales.Muro)
                 {
                     mapa[x, y].salida = 1;
                     salida++;
                 }
             } while (salida != 1);
+        }
+
+        public void trampas()
+        {
+            int trampasminimas = 40;
+            int trampastotal = 0;
+            do
+            {
+                int x = rng.Next(mapa.GetLength(0));
+                int y = rng.Next(mapa.GetLength(1));
+                int tipo = rng.Next(1, 4);
+
+                if (mapa[x, y].terreno != Materiales.Muro && mapa[x,y].trampa == 0)
+                {
+                    if (tipo == 1)
+                    {
+                        mapa[x, y].trampa = 1;
+                        trampastotal++;
+                    }
+                    else if (tipo == 2)
+                    {
+                        mapa[x, y].trampa = 2;
+                        trampastotal++;
+                    }
+                    else if (tipo == 3)
+                    {
+                        mapa[x, y].trampa = 3;
+                        trampastotal++;
+                    }
+                }
+            } while (trampastotal != trampasminimas);
         }
 
         public void Imprimir()
