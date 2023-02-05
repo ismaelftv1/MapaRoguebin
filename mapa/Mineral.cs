@@ -5,9 +5,8 @@ using System.Text;
 
 namespace mapa
 {
-    public class Items
+    public class Mineral : Items
     {
-        public int espacio;
-        public int peso;
+        public int Puereza;
     }
 }

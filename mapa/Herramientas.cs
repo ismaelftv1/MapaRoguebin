@@ -5,9 +5,9 @@ using System.Text;
 
 namespace mapa
 {
-    public class Items
+    public class Herramientas : Items
     {
-        public int espacio;
-        public int peso;
+        public int durabilidad;
+        public int dano;
     }
 }

@@ -18,7 +18,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="mapa.Celda">
-    <Position X="7.25" Y="2.75" Width="1.5" />
+    <Position X="7.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAACAABAAIAAAAAAAAAAAAIAAAA=</HashCode>
       <FileName>Celda.cs</FileName>
@@ -36,17 +36,38 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="mapa.Muro">
-    <Position X="6" Y="5.75" Width="1.5" />
+    <Position X="6.5" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Muro.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="mapa.Suelo">
-    <Position X="7.75" Y="5.75" Width="1.5" />
+    <Position X="8.25" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Suelo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="mapa.Items">
+    <Position X="11" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Items.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="mapa.Herramientas">
+    <Position X="9.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Herramientas.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="mapa.Mineral">
+    <Position X="12.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Mineral.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
