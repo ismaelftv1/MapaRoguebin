@@ -8,20 +8,18 @@ namespace mapa
 {
     public class Celda
     {
-        public int terreno;
         public int vecinos;
         public int salida;
         public int trampa;
 
-        public Celda(int t)
+        public Celda()
         {
-            terreno = t;
             vecinos = 0;
             salida = 0;
             trampa = 0;
         }
 
-        public void Dibuja()
+        public virtual void Dibuja()
         {
 
             if (salida == 1)
@@ -47,25 +45,7 @@ namespace mapa
                     Console.Write("T");
                 }
             }
-            else
-            {
 
-                if (terreno == Materiales.Tierra)
-                {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.Write(".");
-                }
-                else if (terreno == Materiales.Hierba)
-                {
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.Write("*");
-                }
-                else if (terreno == Materiales.Muro)
-                {
-                    Console.ForegroundColor = ConsoleColor.DarkGray;
-                    Console.Write("▓");
-                }
-            }
 
         }
     }

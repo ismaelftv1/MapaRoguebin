@@ -22,7 +22,7 @@ namespace mapa
             {
                 for (int j = 0; j < mapa.GetLength(1); j++)
                 {
-                    mapa[i, j] = new Celda(rng.Next(3));
+                    mapa[i, j] = new Muro();
                 }
             }
         }
@@ -43,11 +43,11 @@ namespace mapa
             {
                 for (int j = 0; j < mapa.GetLength(1); j++)
                 {
-                    mapa[i, j] = new Celda(0);
+                    mapa[i, j] = new Muro();
                 }
             }
             //pick a map cell as the starting point.
-            mapa[x, y].terreno = 2;
+            mapa[x, y] = new Suelo();
             //turn the selected map cell into floor.
 
             //while insufficient cells have been turned into floor,
@@ -84,9 +84,9 @@ namespace mapa
                     y = alto / 2;
                 }
 
-                if (mapa[x, y].terreno == 0)
+                if (mapa[x, y] is Muro)
                 {
-                    mapa[x, y].terreno = 2;
+                    mapa[x, y] = new Suelo();
                     suelomin++;
                 }
 
@@ -110,11 +110,11 @@ namespace mapa
 
                     if (rng.Next(100) < 60)
                     {
-                        mapa[i, j] = new Celda(Materiales.Muro);
+                        mapa[i, j] = new Muro();
                     }
                     else
                     {
-                        mapa[i, j] = new Celda(Materiales.Tierra);
+                        mapa[i, j] = new Suelo();
 
                     }
 
@@ -131,56 +131,56 @@ namespace mapa
                         mapa[i, j].vecinos = 0;
                         if (i < ancho - 1)
                         {
-                            if (mapa[i + 1, j].terreno == 0)
+                            if (mapa[i + 1, j] is Muro)
                             {
                                 mapa[i, j].vecinos++;
                             }
                         }
                         if (i > 0)
                         {
-                            if (mapa[i - 1, j].terreno == 0)
+                            if (mapa[i - 1, j] is Muro)
                             {
                                 mapa[i, j].vecinos++;
                             }
                         }
                         if (j < alto - 1)
                         {
-                            if (mapa[i, j + 1].terreno == 0)
+                            if (mapa[i, j + 1] is Muro)
                             {
                                 mapa[i, j].vecinos++;
                             }
                         }
                         if (j > 0)
                         {
-                            if (mapa[i, j - 1].terreno == 0)
+                            if (mapa[i, j - 1] is Muro)
                             {
                                 mapa[i, j].vecinos++;
                             }
                         }
                         if (j < alto - 1 && i < ancho - 1)
                         {
-                            if (mapa[i + 1, j + 1].terreno == 0)
+                            if (mapa[i + 1, j + 1] is Muro)
                             {
                                 mapa[i, j].vecinos++;
                             }
                         }
                         if (i > 0 && j < alto - 1)
                         {
-                            if (mapa[i - 1, j + 1].terreno == 0)
+                            if (mapa[i - 1, j + 1] is Muro)
                             {
                                 mapa[i, j].vecinos++;
                             }
                         }
                         if (i < ancho - 1 && j > 0)
                         {
-                            if (mapa[i + 1, j - 1].terreno == 0)
+                            if (mapa[i + 1, j - 1] is Muro)
                             {
                                 mapa[i, j].vecinos++;
                             }
                         }
                         if (i > 0 && j > 0)
                         {
-                            if (mapa[i - 1, j - 1].terreno == 0)
+                            if (mapa[i - 1, j - 1] is Muro)
                             {
                                 mapa[i, j].vecinos++;
                             }
@@ -192,21 +192,21 @@ namespace mapa
                 {
                     for (int j = 0; j < mapa.GetLength(1); j++)
                     {
-                        if (mapa[i, j].vecinos < 4 && mapa[i, j].terreno == 0)
+                        if (mapa[i, j].vecinos < 4 && mapa[i, j] is Muro)
                         {
-                            mapa[i, j].terreno = 2;
+                            mapa[i, j] = new Suelo();
                         }
                         else
                         {
-                            if (mapa[i, j].vecinos > 6 && mapa[i, j].terreno == 2)
+                            if (mapa[i, j].vecinos > 6 && mapa[i, j] is Suelo)
                             {
-                                mapa[i, j].terreno = 0;
+                                mapa[i, j] = new Muro();
                             }
                         }
 
                         if (i == 0 || j == 0 || j == alto - 1 || i == ancho - 1)
                         {
-                            mapa[i, j].terreno = 0;
+                            mapa[i, j] = new Muro();
                         }
                     }
                 }
@@ -223,7 +223,7 @@ namespace mapa
             {
                 int x = rng.Next(mapa.GetLength(0));
                 int y = rng.Next(mapa.GetLength(1));
-                if (mapa[x, y].terreno != Materiales.Muro)
+                if (mapa[x, y] is not Muro)
                 {
                     mapa[x, y].salida = 1;
                     salida++;
@@ -233,7 +233,7 @@ namespace mapa
 
         public void trampas()
         {
-            int trampasminimas = 40;
+            int trampasminimas = 20;
             int trampastotal = 0;
             do
             {
@@ -241,7 +241,7 @@ namespace mapa
                 int y = rng.Next(mapa.GetLength(1));
                 int tipo = rng.Next(1, 4);
 
-                if (mapa[x, y].terreno != Materiales.Muro && mapa[x,y].trampa == 0)
+                if (mapa[x, y] is Suelo && mapa[x,y].trampa == 0)
                 {
                     if (tipo == 1)
                     {

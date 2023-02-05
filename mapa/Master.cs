@@ -85,7 +85,7 @@ namespace mapa
                 movery < map.mapa.GetLength(1) &&
                 moverx >= 0 &&
                 movery >= 0 &&
-                map.mapa[moverx, movery].terreno != Materiales.Muro)
+                map.mapa[moverx, movery] is not Muro)
             {
                 player.x = moverx;
                 player.y = movery;
@@ -110,7 +110,7 @@ namespace mapa
         public void SpawnJugador()
         {
             Random rng = new Random();
-            if (map.mapa[player.x, player.y].terreno != Materiales.Tierra)
+            if (map.mapa[player.x, player.y] is not Suelo)
             {
                 do
                 {
@@ -118,7 +118,7 @@ namespace mapa
                     int y = rng.Next(map.mapa.GetLength(1));
                     player.x = x;
                     player.y = y;
-                } while (map.mapa[player.x, player.y].terreno != Materiales.Tierra);
+                } while (map.mapa[player.x, player.y] is not Suelo);
             }
         }
 
