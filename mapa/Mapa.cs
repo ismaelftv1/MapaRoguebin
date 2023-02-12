@@ -263,27 +263,32 @@ namespace mapa
 
                     if (probabilidad > 50)
                     {
+                        mapa[x, y] = new Muro();
                         mapa[x, y].loot = new Cobre();
                         Menas++;
 
                     }
                     else if (probabilidad > 30)
                     {
+                        mapa[x, y] = new Muro();
                         mapa[x, y].loot = new Hierro();
                         Menas++;
                     }
                     else if (probabilidad > 10)
                     {
+                        mapa[x, y] = new Muro();
                         mapa[x, y].loot = new Plata();
                         Menas++;
                     }
                     else if (probabilidad > 5)
                     {
+                        mapa[x, y] = new Muro();
                         mapa[x, y].loot = new Oro();
                         Menas++;
                     }
                     else if (probabilidad > 3)
                     {
+                        mapa[x, y] = new Muro();
                         mapa[x, y].loot = new Mithril();
                         Menas++;
                     }
