@@ -5,4 +5,9 @@ using System.Text;
 
 namespace mapa
 {
+    public class Item
+    {
+        public int espacio;
+        public int peso;
+    }
 }

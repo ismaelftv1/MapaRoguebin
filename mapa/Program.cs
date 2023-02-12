@@ -19,7 +19,7 @@
             ConsoleKey tecla;
             do
             {
-
+                
                 player.dibuja();
                 tecla = Console.ReadKey(true).Key;
 

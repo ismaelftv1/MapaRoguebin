@@ -5,7 +5,7 @@ using System.Text;
 
 namespace mapa
 {
-    public class Herramientas : Items
+    public class Pico : Item
     {
         public int durabilidad;
         public int dano;

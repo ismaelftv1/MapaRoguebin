@@ -11,6 +11,7 @@ namespace mapa
     {
         Mapa map;
         Jugador player;
+        List<Item> inventario = new List<Item>();
 
         public Master(Mapa map, Jugador player)
         {
@@ -44,7 +45,15 @@ namespace mapa
             NuevoMapa();
             danotrampa();
         }
+        //Mecanicas items
 
+        void Beber()
+        {
+            if (map.mapa[player.x,player.y].loot is Cerveza)
+            {
+                player.vida += 15;
+            }
+        }
 
         //Mecanicas trampas
 
@@ -69,7 +78,7 @@ namespace mapa
         {
             if (map.mapa[player.x, player.y].salida == 1)
             {
-                map.RamdonWalk();
+                map.CellularAut();
                 map.Imprimir();
                 SpawnJugador();
             }

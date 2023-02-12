@@ -13,7 +13,7 @@ namespace mapa
         public Mapa(int ancho, int alto)
         {
             mapa = new Celda[ancho, alto];
-            RamdonWalk();
+            CellularAut();
         }
 
         public void Rellenar()
@@ -91,8 +91,8 @@ namespace mapa
                 }
 
             } while (suelomin != suelo);
-            Salida();
-            trampas();
+            SpawnSalida();
+            Trampas();
         }
 
         public void CellularAut()
@@ -212,11 +212,14 @@ namespace mapa
                 }
                 vueltas++;
             } while (vueltas != vueltasmin);
-            Salida();
-
+            SpawnSalida();
+            SpawnHorno();
+            Trampas();
+            SpawnMenas();
+            SpawnCerveza();
         }
 
-        public void Salida()
+        public void SpawnSalida()
         {
             int salida = 0;
             do
@@ -231,7 +234,79 @@ namespace mapa
             } while (salida != 1);
         }
 
-        public void trampas()
+        public void SpawnHorno()
+        {
+            int horno = 0;
+            do
+            {
+                int x = rng.Next(mapa.GetLength(0));
+                int y = rng.Next(mapa.GetLength(1));
+                if (mapa[x, y] is not Muro)
+                {
+                    mapa[x, y] = new Horno();
+                    horno++;
+                }
+            } while (horno != 1);
+        }
+
+        public void SpawnMenas()
+        {
+            int Menas = 0;
+
+            do
+            {
+                int probabilidad = rng.Next(100);
+                int x = rng.Next(mapa.GetLength(0));
+                int y = rng.Next(mapa.GetLength(1));
+                if (x != 0 || y != 0 || y != mapa.GetLength(1) - 1 || x != mapa.GetLength(0) - 1 && mapa[x,y].loot == null)
+                {
+
+                    if (probabilidad > 50)
+                    {
+                        mapa[x, y].loot = new Cobre();
+                        Menas++;
+
+                    }
+                    else if (probabilidad > 30)
+                    {
+                        mapa[x, y].loot = new Hierro();
+                        Menas++;
+                    }
+                    else if (probabilidad > 10)
+                    {
+                        mapa[x, y].loot = new Plata();
+                        Menas++;
+                    }
+                    else if (probabilidad > 5)
+                    {
+                        mapa[x, y].loot = new Oro();
+                        Menas++;
+                    }
+                    else if (probabilidad > 3)
+                    {
+                        mapa[x, y].loot = new Mithril();
+                        Menas++;
+                    }
+                }
+            } while (Menas != 10);
+        }
+
+        public void SpawnCerveza()
+        {
+            int Cerveza = 0;
+            do
+            {
+                
+                int x = rng.Next(mapa.GetLength(0));
+                int y = rng.Next(mapa.GetLength(1));
+                if (mapa[x,y] is not Muro && mapa[x, y].loot == null)
+                {
+                    Cerveza++;
+                }
+            } while (Cerveza != 10);
+        }
+
+        public void Trampas()
         {
             int trampasminimas = 20;
             int trampastotal = 0;
@@ -241,7 +316,7 @@ namespace mapa
                 int y = rng.Next(mapa.GetLength(1));
                 int tipo = rng.Next(1, 4);
 
-                if (mapa[x, y] is Suelo && mapa[x,y].trampa == 0)
+                if (mapa[x, y] is Suelo && mapa[x, y].trampa == 0)
                 {
                     if (tipo == 1)
                     {

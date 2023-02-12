@@ -5,8 +5,14 @@ using System.Text;
 
 namespace mapa
 {
-    public class Mineral : Items
+    public class Mineral : Item
     {
-        public int Puereza;
+        public int vida;
+        public virtual void Dibuja()
+        {
+
+        }
     }
+
+
 }

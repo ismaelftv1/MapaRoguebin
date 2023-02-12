@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="mapa.Mapa">
-    <Position X="4.75" Y="2.75" Width="1.5" />
+    <Position X="4" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AkAEIAAAAAAAAAAAAAAAgAAAAAAABAAAAAAIAAAAACA=</HashCode>
+      <HashCode>AgAEIAAAAAABAAAAAAAAAAAAAAAARAAAAAAIAAFAACA=</HashCode>
       <FileName>Mapa.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -20,14 +20,17 @@
   <Class Name="mapa.Celda">
     <Position X="7.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAACAABAAIAAAAAAAAAAAAIAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAgAAAAAACAABAAIAAAAAAAAAAAAIAAAA=</HashCode>
       <FileName>Celda.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="loot" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="mapa.Master" Collapsed="true">
-    <Position X="5.25" Y="0.5" Width="1.5" />
+    <Position X="3.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAkAAAAAAgABCAAAAAAAAAIAAAAAIBAAAAAAgAEAI=</HashCode>
+      <HashCode>AAAAkAAAAAAgABCAAAAAAAAAIAAAAAIBAAAAFAgAEAI=</HashCode>
       <FileName>Master.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -43,31 +46,80 @@
     </TypeIdentifier>
   </Class>
   <Class Name="mapa.Suelo">
-    <Position X="8.25" Y="5.25" Width="1.5" />
+    <Position X="8" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Suelo.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="mapa.Items">
-    <Position X="11" Y="1.5" Width="1.5" />
+  <Class Name="mapa.Item">
+    <Position X="12.25" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
-      <FileName>Items.cs</FileName>
+      <FileName>Item.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="mapa.Herramientas">
-    <Position X="9.75" Y="3.25" Width="1.5" />
+  <Class Name="mapa.Pico">
+    <Position X="11" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
-      <FileName>Herramientas.cs</FileName>
+      <FileName>Pico.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="mapa.Mineral">
-    <Position X="12.25" Y="3.75" Width="1.5" />
+    <Position X="13.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAEAAAAAAAAA=</HashCode>
       <FileName>Mineral.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="mapa.Hierro">
+    <Position X="14" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Hierro.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="mapa.Mithril">
+    <Position X="14.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mithril.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="mapa.Cobre">
+    <Position X="12.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Cobre.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="mapa.Plata">
+    <Position X="15.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Plata.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="mapa.Oro">
+    <Position X="12.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Oro.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="mapa.Horno">
+    <Position X="9.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Horno.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="mapa.Cerveza">
+    <Position X="16" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Cerveza.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
