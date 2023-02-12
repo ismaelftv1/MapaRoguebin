@@ -51,8 +51,7 @@ namespace mapa
             {
                 if (loot != null)
                 {
-                    ((Mineral)loot).Dibuja();
-                    ((Cerveza)loot).Dibuja();
+                    loot.Dibuja();
                 }
             }
 

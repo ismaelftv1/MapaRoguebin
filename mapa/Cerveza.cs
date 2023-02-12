@@ -7,10 +7,10 @@ namespace mapa
 {
     public class Cerveza : Item
     {
-        public void Dibuja()
+        public override void Dibuja()
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.Write("■");
+            Console.Write("C");
         }
     }
 }

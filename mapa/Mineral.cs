@@ -8,10 +8,6 @@ namespace mapa
     public class Mineral : Item
     {
         public int vida;
-        public virtual void Dibuja()
-        {
-
-        }
     }
 
 

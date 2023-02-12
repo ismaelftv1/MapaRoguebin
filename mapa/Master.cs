@@ -44,6 +44,7 @@ namespace mapa
             }
             NuevoMapa();
             danotrampa();
+            Beber();
         }
         //Mecanicas items
 
@@ -52,6 +53,7 @@ namespace mapa
             if (map.mapa[player.x,player.y].loot is Cerveza)
             {
                 player.vida += 15;
+                map.mapa[player.x, player.y].loot = null;
             }
         }
 

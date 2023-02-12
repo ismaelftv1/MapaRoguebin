@@ -293,7 +293,7 @@ namespace mapa
 
         public void SpawnCerveza()
         {
-            int Cerveza = 0;
+            int Cantidad = 0;
             do
             {
                 
@@ -301,9 +301,10 @@ namespace mapa
                 int y = rng.Next(mapa.GetLength(1));
                 if (mapa[x,y] is not Muro && mapa[x, y].loot == null)
                 {
-                    Cerveza++;
+                    mapa[x, y].loot = new Cerveza();
+                    Cantidad++;
                 }
-            } while (Cerveza != 10);
+            } while (Cantidad != 10);
         }
 
         public void Trampas()

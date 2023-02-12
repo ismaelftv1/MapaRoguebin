@@ -25,7 +25,6 @@
 
                 game.Moverjugador(tecla);
             } while (tecla != ConsoleKey.Escape && player.vida > 0);
-
         }
     }
 }

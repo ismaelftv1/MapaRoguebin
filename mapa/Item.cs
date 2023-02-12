@@ -9,5 +9,12 @@ namespace mapa
     {
         public int espacio;
         public int peso;
+
+        public virtual void Dibuja()
+        {
+
+        }
     }
+
+    
 }
