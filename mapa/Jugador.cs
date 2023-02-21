@@ -9,9 +9,9 @@ namespace mapa
 {
     public class Jugador
     {
-       public int x,y;
-       public int vida;
-
+        public int x, y;
+        public int vida;
+        public List<Item> Inventario = new List<Item>();
         public Jugador(int x, int y)
         {
             this.y = y;
@@ -22,7 +22,7 @@ namespace mapa
         public void dibuja()
         {
             Console.ForegroundColor = ConsoleColor.White;
-            Console.SetCursorPosition(x,y);
+            Console.SetCursorPosition(x, y);
             Console.Write("▲");
         }
     }

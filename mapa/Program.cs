@@ -8,8 +8,8 @@
             Mapa map;
             Jugador player;
 
-            map = new Mapa(100,25);
-            player = new Jugador(10,10);
+            map = new Mapa(100, 25);
+            player = new Jugador(10, 10);
 
             game = new Master(map, player);
             game.SpawnJugador();
@@ -19,7 +19,17 @@
             ConsoleKey tecla;
             do
             {
-                
+                //GUI
+                Console.SetCursorPosition(101, 0);
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write("Vida: ");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write(player.vida + " ");
+                Console.SetCursorPosition(101, 1);
+                Console.Write("test");
+
+
+
                 player.dibuja();
                 tecla = Console.ReadKey(true).Key;
 
