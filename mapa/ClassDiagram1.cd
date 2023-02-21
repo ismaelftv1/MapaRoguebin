@@ -30,7 +30,7 @@
   <Class Name="mapa.Master" Collapsed="true">
     <Position X="3.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAkAAAAAAgABCAAAAAAAAAIAAAAAIBAAAAFAgAEAI=</HashCode>
+      <HashCode>AAAAkEAAAAQgABCAAAQQAAAAIAAgAAIBAAAAEAgAEAI=</HashCode>
       <FileName>Master.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>

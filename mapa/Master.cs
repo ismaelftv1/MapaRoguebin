@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Numerics;
 using System.Runtime.CompilerServices;
@@ -29,16 +30,36 @@ namespace mapa
             switch (tecla)
             {
                 case ConsoleKey.S:
+                case ConsoleKey.DownArrow:
                     MoverAbajo();
+                    if (player.Inventario[0] is Pico)
+                    {
+                        PicarAbajo();
+                    }
                     break;
                 case ConsoleKey.D:
+                case ConsoleKey.RightArrow:
                     MoverDerecha();
+                    if (player.Inventario[0] is Pico)
+                    {
+                        PicarDerecha();
+                    }
                     break;
                 case ConsoleKey.W:
+                case ConsoleKey.UpArrow:
                     MoverArriba();
+                    if (player.Inventario[0] is Pico)
+                    {
+                        PicarArriba();
+                    }
                     break;
                 case ConsoleKey.A:
+                case ConsoleKey.LeftArrow:
                     MoverIzquierda();
+                    if (player.Inventario[0] is Pico)
+                    {
+                        PicarIzquierda();
+                    }
                     break;
             }
             NuevoMapa();
@@ -50,7 +71,7 @@ namespace mapa
 
         void Beber()
         {
-            if (map.mapa[player.x,player.y].loot is Cerveza)
+            if (map.mapa[player.x, player.y].loot is Cerveza)
             {
                 player.vida += 15;
                 map.mapa[player.x, player.y].loot = null;
@@ -61,18 +82,25 @@ namespace mapa
         {
             if (map.mapa[player.x, player.y].loot is Cobre)
             {
-                Console.Write("TEST OROOOO");
+                Console.Write("TEST cobreeeeeeee");
             }
         }
+
+        // picar
 
         void Picar(int picarx, int picary)
         {
             picarx = player.x + picarx;
             picary = player.y + picary;
 
-            if (player.Inventario[0] is Pico && map.mapa[picarx,picary] is Muro)
+            if (player.Inventario[0] is Pico &&
+                picarx < map.mapa.GetLength(0) &&
+                picary < map.mapa.GetLength(1) &&
+                picarx >= 0 &&
+                picary >= 0 &&
+                map.mapa[picarx, picary] is Muro)
             {
-                map.mapa[picarx,picary] = new Suelo();
+                map.mapa[picarx, picary] = new Suelo();
             }
             else
             {
@@ -80,11 +108,28 @@ namespace mapa
             }
         }
 
+        void PicarArriba()
+        {
+            Picar(0, -1);
+        }
+        void PicarAbajo()
+        {
+            Picar(0, 1);
+        }
+        void PicarDerecha()
+        {
+            Picar(1, 0);
+        }
+        void PicarIzquierda()
+        {
+            Picar (- 1, 0);
+        }
+
         //Mecanicas trampas
 
         void danotrampa()
         {
-            if (map.mapa[player.x,player.y].trampa == 1)
+            if (map.mapa[player.x, player.y].trampa == 1)
             {
                 player.vida = player.vida - 5;
             }
@@ -129,22 +174,18 @@ namespace mapa
         void MoverArriba()
         {
             MoverMecanica(0, -1);
-            Picar(0, -1);
         }
         void MoverAbajo()
         {
             MoverMecanica(0, 1);
-            Picar(0, 1);
         }
         void MoverDerecha()
         {
             MoverMecanica(1, 0);
-            Picar(1, 0);
         }
         void MoverIzquierda()
         {
             MoverMecanica(-1, 0);
-            Picar(-1, 0);
         }
         public void SpawnJugador()
         {

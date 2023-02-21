@@ -17,6 +17,8 @@
 
             Console.CursorVisible = false;
             ConsoleKey tecla;
+            player.Inventario.Add(new Cobre());
+
             do
             {
                 //GUI
@@ -30,7 +32,7 @@
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Write(player.vida + " ");
 
-                player.Inventario.Add(new Pico());
+                
 
 
                 player.dibuja();
