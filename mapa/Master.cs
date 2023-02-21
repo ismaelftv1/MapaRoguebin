@@ -11,7 +11,6 @@ namespace mapa
     {
         Mapa map;
         Jugador player;
-        List<Item> inventario = new List<Item>();
 
         public Master(Mapa map, Jugador player)
         {
@@ -46,6 +45,7 @@ namespace mapa
             danotrampa();
             Beber();
         }
+
         //Mecanicas items
 
         void Beber()
@@ -54,6 +54,29 @@ namespace mapa
             {
                 player.vida += 15;
                 map.mapa[player.x, player.y].loot = null;
+            }
+        }
+
+        void CogerMena()
+        {
+            if (map.mapa[player.x, player.y].loot is Cobre)
+            {
+                Console.Write("TEST OROOOO");
+            }
+        }
+
+        void Picar(int picarx, int picary)
+        {
+            picarx = player.x + picarx;
+            picary = player.y + picary;
+
+            if (player.Inventario[0] is Pico && map.mapa[picarx,picary] is Muro)
+            {
+                map.mapa[picarx,picary] = new Suelo();
+            }
+            else
+            {
+
             }
         }
 
@@ -83,6 +106,7 @@ namespace mapa
                 map.CellularAut();
                 map.Imprimir();
                 SpawnJugador();
+                map.nivel++;
             }
         }
 
@@ -105,18 +129,22 @@ namespace mapa
         void MoverArriba()
         {
             MoverMecanica(0, -1);
+            Picar(0, -1);
         }
         void MoverAbajo()
         {
             MoverMecanica(0, 1);
+            Picar(0, 1);
         }
         void MoverDerecha()
         {
             MoverMecanica(1, 0);
+            Picar(1, 0);
         }
         void MoverIzquierda()
         {
             MoverMecanica(-1, 0);
+            Picar(-1, 0);
         }
         public void SpawnJugador()
         {

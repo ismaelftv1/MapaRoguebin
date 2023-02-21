@@ -9,6 +9,7 @@ namespace mapa
     {
         public Celda[,] mapa;
         Random rng = new Random();
+        public int nivel = 0;
 
         public Mapa(int ancho, int alto)
         {

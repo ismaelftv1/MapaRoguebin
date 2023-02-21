@@ -21,13 +21,16 @@
             {
                 //GUI
                 Console.SetCursorPosition(101, 0);
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write("Nivel: ");
+                Console.Write(map.nivel);
+                Console.SetCursorPosition(101, 1);
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.Write("Vida: ");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Write(player.vida + " ");
-                Console.SetCursorPosition(101, 1);
-                Console.Write("test");
 
+                player.Inventario.Add(new Pico());
 
 
                 player.dibuja();
