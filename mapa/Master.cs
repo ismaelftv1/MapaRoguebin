@@ -80,7 +80,7 @@ namespace mapa
 
         void CogerMena()
         {
-            if (map.mapa[player.x, player.y].loot is Cobre)
+            if (map.mapa[player.x, player.y].loot)
             {
                 Console.Write("TEST cobreeeeeeee");
             }
