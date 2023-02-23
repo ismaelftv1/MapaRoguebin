@@ -17,7 +17,7 @@
 
             Console.CursorVisible = false;
             ConsoleKey tecla;
-            player.Inventario.Add(new Cobre());
+            player.Inventario.Add(new Pico());
 
             do
             {

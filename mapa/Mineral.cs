@@ -8,7 +8,10 @@ namespace mapa
     public class Mineral : Item
     {
         public int vida;
+
+        public Mineral()
+        {
+            this.vida = 10;
+        }
     }
-
-
 }
