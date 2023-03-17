@@ -10,7 +10,7 @@ namespace mapa
     public class Jugador
     {
         public int x, y;
-        public int vida;
+        int vida;
         public List<Item> Inventario = new List<Item>();
         public Jugador(int x, int y)
         {
@@ -23,7 +23,22 @@ namespace mapa
         {
             Console.ForegroundColor = ConsoleColor.White;
             Console.SetCursorPosition(x, y);
-            Console.Write("▲");
+            Console.Write("☺");
         }
+
+        public int getVida() { return vida; }
+
+        public void setvida(int vida)
+        {
+            if ((this.vida += vida) >= 200 )
+            {
+                this.vida = 200;
+            }
+            else
+            {
+                this.vida += vida;
+            }
+        }
+
     }
 }

@@ -34,17 +34,17 @@ namespace mapa
                 if (trampa == 1)
                 {
                     Console.ForegroundColor = ConsoleColor.Magenta;
-                    Console.Write("t");
+                    Console.Write(",");
                 }
                 else if (trampa == 2)
                 {
                     Console.ForegroundColor = ConsoleColor.DarkMagenta;
-                    Console.Write("t");
+                    Console.Write(",");
                 }
                 else if (trampa == 3)
                 {
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.Write("t");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write(".");
                 }
             }
             else

@@ -5,13 +5,15 @@ using System.Text;
 
 namespace mapa
 {
-    public abstract class Mineral : Item
+    public abstract class Enemigo
     {
         public int vida;
+        public int dano;
+        public int x;
+        public int y;
 
-        public Mineral()
+        public virtual void dibuja()
         {
-            this.vida = 10;
         }
     }
 }

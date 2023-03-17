@@ -7,6 +7,11 @@ namespace mapa
 {
     public class Cobre : Mineral
     {
+        public Cobre() { }
+        public Cobre(int NuevaVida) 
+        {
+            this.vida = NuevaVida;
+        }
         public override void Dibuja()
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;

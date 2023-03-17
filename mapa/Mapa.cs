@@ -14,7 +14,7 @@ namespace mapa
         public Mapa(int ancho, int alto)
         {
             mapa = new Celda[ancho, alto];
-            CellularAut();
+            RamdonWalk();
         }
 
         public void Rellenar()
@@ -93,7 +93,10 @@ namespace mapa
 
             } while (suelomin != suelo);
             SpawnSalida();
+            SpawnHorno();
             Trampas();
+            SpawnMenas();
+            SpawnCerveza();
         }
 
         public void CellularAut()
@@ -264,28 +267,28 @@ namespace mapa
 
                     if (probabilidad > 50)
                     {
-                        mapa[x, y].loot = new Cobre();
+                        mapa[x, y].loot = new Cobre(rng.Next(4,7));
                         Menas++;
 
                     }
                     else if (probabilidad > 30)
                     {
-                        mapa[x, y].loot = new Hierro();
+                        mapa[x, y].loot = new Hierro(rng.Next(8, 14));
                         Menas++;
                     }
                     else if (probabilidad > 10)
                     {
-                        mapa[x, y].loot = new Plata();
+                        mapa[x, y].loot = new Plata(rng.Next(13, 18));
                         Menas++;
                     }
                     else if (probabilidad > 5)
                     {
-                        mapa[x, y].loot = new Oro();
+                        mapa[x, y].loot = new Oro(rng.Next(18, 23));
                         Menas++;
                     }
                     else if (probabilidad > 3)
                     {
-                        mapa[x, y].loot = new Mithril();
+                        mapa[x, y].loot = new Mithril(rng.Next(30, 50));
                         Menas++;
                     }
                 }

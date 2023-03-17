@@ -7,9 +7,15 @@ namespace mapa
 {
     public class Hierro : Mineral
     {
+        public Hierro() { }
+        public Hierro(int NuevaVida)
+        {
+            this.vida = NuevaVida;
+        }
+
         public override void Dibuja()
         {
-            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.Write("■");
         }
     }

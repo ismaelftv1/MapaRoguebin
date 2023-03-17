@@ -7,7 +7,11 @@ namespace mapa
 {
     public class Mithril : Mineral
     {
-
+        public Mithril() { }
+        public Mithril(int NuevaVida)
+        {
+            this.vida = NuevaVida;
+        }
         public override void Dibuja()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;

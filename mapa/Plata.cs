@@ -7,9 +7,14 @@ namespace mapa
 {
     public class Plata : Mineral
     {
+        public Plata() { }
+        public Plata(int NuevaVida) 
+        {
+            this.vida = NuevaVida;
+        }
         public override void Dibuja()
         {
-            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.ForegroundColor = ConsoleColor.Gray;
             Console.Write("■");
         }
     }

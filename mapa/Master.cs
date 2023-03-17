@@ -12,6 +12,7 @@ namespace mapa
     {
         Mapa map;
         Jugador player;
+        Ejercito Malos = new Ejercito();
 
         public Master(Mapa map, Jugador player)
         {
@@ -62,9 +63,26 @@ namespace mapa
                     MoverIzquierda();
                     break;
             }
+        }
+
+        public void Comprobadores()
+        {
             NuevoMapa();
             danotrampa();
             Beber();
+            CogerMena();
+            Crafteo();
+            PicoRoto();
+        }
+
+        //Mecanicas Malos
+
+        public void SpawnMalos()
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                Malos.Addmalo();
+            }
         }
 
         //Mecanicas items
@@ -73,19 +91,95 @@ namespace mapa
         {
             if (map.mapa[player.x, player.y].loot is Cerveza)
             {
-                player.vida += 15;
+                player.setvida(15);
                 map.mapa[player.x, player.y].loot = null;
+            }
+        }
+
+        void PicoRoto()
+        {
+            if (player.Inventario[0] is Pico)
+            {
+                if (((Pico)player.Inventario[0]).durabilidad <= 0)
+                {
+                    player.Inventario.RemoveAt(0);
+                }
             }
         }
 
         void CogerMena()
         {
-            if (map.mapa[player.x, player.y].loot is Cobre)
+            if (map.mapa[player.x, player.y].loot is Mineral)
             {
-                Console.Write("TEST cobreeeeeeee");
+                if (map.mapa[player.x, player.y].loot is Cobre)
+                {
+                    player.Inventario.Add(new Cobre());
+                }
+                else if (map.mapa[player.x, player.y].loot is Hierro)
+                {
+                    player.Inventario.Add(new Hierro());
+                }
+                else if (map.mapa[player.x, player.y].loot is Plata)
+                {
+                    player.Inventario.Add(new Plata());
+                }
+                else if (map.mapa[player.x, player.y].loot is Oro)
+                {
+                    player.Inventario.Add(new Oro());
+                }
+                else if (map.mapa[player.x, player.y].loot is Mithril)
+                {
+                    player.Inventario.Add(new Mithril());
+                }
+                map.mapa[player.x, player.y].loot = null;
             }
+  
         }
 
+        void Crafteo()
+        {
+            int CantidadCobre = player.Inventario.FindAll(x => x is Cobre).Count;
+            int CantidadHierro = player.Inventario.FindAll(x => x is Hierro).Count;
+            int CantidadOro = player.Inventario.FindAll(x => x is Oro).Count;
+            int CantidadPlata = player.Inventario.FindAll(x => x is Plata).Count;
+            int CantidadMithril = player.Inventario.FindAll(x => x is Mithril).Count;
+
+            Pico PicoCobre = new Pico(20,1);
+            Pico PicoHierro = new Pico(50,1);
+            Pico PicoOro = new Pico(30,3);
+            Pico PicoPlata = new Pico(70,2);
+            Pico PicoMithril = new Pico(100,5);
+
+            if (map.mapa[player.x,player.y] is Horno)
+            {
+                if (CantidadCobre >= 2)
+                {
+                    player.Inventario.RemoveAll(x => x is Cobre);
+                    player.Inventario.Insert(0,PicoCobre);
+                }
+                if (CantidadHierro >= 2)
+                {
+                    player.Inventario.RemoveAll(x => x is Hierro);
+                    player.Inventario.Insert(0, PicoHierro);
+                }
+                if (CantidadOro >= 2)
+                {
+                    player.Inventario.RemoveAll(x => x is Oro);
+                    player.Inventario.Insert(0, PicoOro);
+                }
+                if (CantidadPlata >= 2)
+                {
+                    player.Inventario.RemoveAll(x => x is Plata);
+                    player.Inventario.Insert(0, PicoPlata);
+                }
+                if (CantidadMithril >= 2)
+                {
+                    player.Inventario.RemoveAll(x => x is Mithril);
+                    player.Inventario.Insert(0, PicoMithril);
+                }
+            }
+        }
+         
         // picar
 
         void Picar(int picarx, int picary)
@@ -93,33 +187,25 @@ namespace mapa
             picarx = player.x + picarx;
             picary = player.y + picary;
 
-            if (map.mapa[picarx, picary].loot is Mineral &&
-                picarx < map.mapa.GetLength(0) - 1 &&
-                picary < map.mapa.GetLength(1) - 1 &&
-                picarx >= 0 &&
+            if (picarx >= 0 &&
                 picary >= 0 &&
+                picarx < map.mapa.GetLength(0) &&
+                picary < map.mapa.GetLength(1) &&
+                map.mapa[picarx, picary].loot is Mineral &&
                 ((Mineral)map.mapa[picarx, picary].loot).vida > 0)
             {
                 ((Mineral)map.mapa[picarx, picary].loot).vida -= 1;
-
-                Console.SetCursorPosition(101, 2);
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.Write("Debug:");
-                Console.Write("Picar 1");
+                ((Pico)player.Inventario[0]).durabilidad -= 1;
             }
             else if (player.Inventario[0] is Pico &&
-                    picarx < map.mapa.GetLength(0) - 1 &&
-                    picary < map.mapa.GetLength(1) - 1 &&
+                    picarx < map.mapa.GetLength(0) &&
+                    picary < map.mapa.GetLength(1) &&
                     picarx >= 0 &&
                     picary >= 0 &&
                     map.mapa[picarx, picary] is Muro)
             {
                 map.mapa[picarx, picary] = new Suelo();
-
-                Console.SetCursorPosition(101, 2);
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.Write("Debug:");
-                Console.Write("Picar 2");
+                ((Pico)player.Inventario[0]).durabilidad -= 1;
             }
         }
 
@@ -146,24 +232,31 @@ namespace mapa
         {
             if (map.mapa[player.x, player.y].trampa == 1)
             {
-                player.vida = player.vida - 5;
+                player.setvida(-5);
             }
             else if (map.mapa[player.x, player.y].trampa == 2)
             {
-                player.vida = player.vida - 15;
+                player.setvida(-15);
             }
             else if (map.mapa[player.x, player.y].trampa == 3)
             {
-                player.vida = player.vida - 25;
+                player.setvida(-25);
             }
         }
 
         //Mecanicas generar nuevo mapa
         void NuevoMapa()
         {
-            if (map.mapa[player.x, player.y].salida == 1)
+            if (map.mapa[player.x, player.y].salida == 1 && map.nivel >= 5)
             {
                 map.CellularAut();
+                map.Imprimir();
+                SpawnJugador();
+                map.nivel++;
+            }
+            else if (map.mapa[player.x, player.y].salida == 1 && map.nivel < 5)
+            {
+                map.RamdonWalk();
                 map.Imprimir();
                 SpawnJugador();
                 map.nivel++;
@@ -175,22 +268,17 @@ namespace mapa
         {
             moverx = player.x + moverx;
             movery = player.y + movery;
-            if (map.mapa[moverx, movery].loot is Mineral &&
+            if (moverx >= 0 &&
+                movery >= 0 &&
                 moverx < map.mapa.GetLength(0) &&
                 movery < map.mapa.GetLength(1) &&
-                moverx >= 0 &&
-                movery >= 0 &&
+                map.mapa[moverx, movery].loot is Mineral &&
                 map.mapa[moverx, movery] is not Muro)
             {
                 if (((Mineral)map.mapa[moverx, movery].loot).vida <= 0)
                 {
                     player.x = moverx;
                     player.y = movery;
-
-                    Console.SetCursorPosition(101, 2);
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.Write("Debug:");
-                    Console.Write("Mover 1");
                 }
             }
             else if (moverx < map.mapa.GetLength(0) &&
@@ -201,10 +289,6 @@ namespace mapa
             {
                 player.x = moverx;
                 player.y = movery;
-                Console.SetCursorPosition(101, 2);
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.Write("Debug:");
-                Console.Write("Mover 2");
             }
         }
         void MoverArriba()

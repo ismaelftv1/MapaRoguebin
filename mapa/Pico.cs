@@ -9,5 +9,11 @@ namespace mapa
     {
         public int durabilidad;
         public int dano;
+
+        public Pico(int durabilidad, int dano)
+        {
+            this.durabilidad = durabilidad;
+            this.dano = dano;
+        }
     }
 }
