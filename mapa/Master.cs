@@ -12,12 +12,13 @@ namespace mapa
     {
         Mapa map;
         Jugador player;
-        Ejercito Malos = new Ejercito();
+        Ejercito Malos;
 
-        public Master(Mapa map, Jugador player)
+        public Master(Mapa map, Jugador player,Ejercito malos)
         {
             this.map = map;
             this.player = player;
+            this.Malos = malos;
         }
 
         public void Moverjugador(ConsoleKey tecla)
@@ -249,6 +250,7 @@ namespace mapa
         {
             if (map.mapa[player.x, player.y].salida == 1 && map.nivel >= 5)
             {
+
                 map.CellularAut();
                 map.Imprimir();
                 SpawnJugador();
@@ -256,6 +258,7 @@ namespace mapa
             }
             else if (map.mapa[player.x, player.y].salida == 1 && map.nivel < 5)
             {
+                SpawnMalos();
                 map.RamdonWalk();
                 map.Imprimir();
                 SpawnJugador();
